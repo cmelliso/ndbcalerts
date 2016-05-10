@@ -12,6 +12,8 @@ import javax.xml.stream.events.Characters;
 import javax.xml.stream.events.XMLEvent;
 
 /**
+ * Reads an RSS feed from the passed-in URL.
+ *
  * Created by Christopher on 5/10/2016.
  */
 public class FeedReader {
@@ -21,10 +23,10 @@ public class FeedReader {
     static final String CHANNEL = "channel";
     static final String LANGUAGE = "language";
     static final String COPYRIGHT = "copyright";
-    static final String LINK = "link";
+    static final String URL = "url";
     static final String AUTHOR = "author";
     static final String ITEM = "item";
-    static final String PUB_DATE = "pubDate";
+    static final String PUB_DATE = "publicationDate";
     static final String GUID = "guid";
 
     final URL url;
@@ -44,7 +46,7 @@ public class FeedReader {
             // Set header values intial to the empty string
             String description = "";
             String title = "";
-            String link = "";
+            String url = "";
             String language = "";
             String copyright = "";
             String author = "";
@@ -66,7 +68,7 @@ public class FeedReader {
                         case ITEM:
                             if (isFeedHeader) {
                                 isFeedHeader = false;
-                                feed = new Feed(title, link, description, language,
+                                feed = new Feed(title, url, description, language,
                                         copyright, pubdate);
                             }
                             event = eventReader.nextEvent();
@@ -77,8 +79,8 @@ public class FeedReader {
                         case DESCRIPTION:
                             description = getCharacterData(event, eventReader);
                             break;
-                        case LINK:
-                            link = getCharacterData(event, eventReader);
+                        case URL:
+                            url = getCharacterData(event, eventReader);
                             break;
                         case GUID:
                             guid = getCharacterData(event, eventReader);
@@ -102,11 +104,10 @@ public class FeedReader {
                         message.setAuthor(author);
                         message.setDescription(description);
                         message.setGuid(guid);
-                        message.setLink(link);
+                        message.setUrl(url);
                         message.setTitle(title);
                         feed.getMessages().add(message);
                         event = eventReader.nextEvent();
-                        continue;
                     }
                 }
             }

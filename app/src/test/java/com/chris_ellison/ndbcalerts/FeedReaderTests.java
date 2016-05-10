@@ -11,6 +11,8 @@ import java.util.Arrays;
 import java.util.Collection;
 
 /**
+ * Tester for the FeedReader class.
+ *
  * Created by Christopher on 5/10/2016.
  */
 @RunWith(Parameterized.class)
@@ -28,19 +30,18 @@ public class FeedReaderTests {
     private String url;
     private String feedTitle;
 
-    public FeedReaderTests(String url, String feedTitle, String msgTitle) {
+    public FeedReaderTests(String url, String feedTitle) {
         this.url = url;
         this.feedTitle = feedTitle;
     }
 
     @Test
-    public void testFeedParsing() {
+    public void testFeedReading() {
         FeedReader parser = new FeedReader(this.url);
         Feed feed = parser.readFeed();
         Assert.assertEquals("Feed title was not as expected.", this.feedTitle, feed.getTitle().trim());
         for (FeedMessage message : feed.getMessages()) {
-            Assert.assertTrue("Message title was empty.", StringUtils.isNotBlank(feed.getTitle()));
-            Assert.assertTrue("Message url was empty.", StringUtils.isNotBlank(feed.getUrl()));
+            Assert.assertTrue("Message title was empty.", StringUtils.isNotBlank(message.getTitle()));
         }
     }
 }
