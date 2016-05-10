@@ -40,7 +40,7 @@ public class FeedReaderTests {
         Assert.assertEquals("Feed title was not as expected.", this.feedTitle, feed.getTitle().trim());
         for (FeedMessage message : feed.getMessages()) {
             Assert.assertTrue("Message title was empty.", StringUtils.isNotBlank(feed.getTitle()));
-            Assert.assertTrue("Message url was empty.", StringUtils.isNotBlank(feed.getLink()));
+            Assert.assertTrue("Message url was empty.", StringUtils.isNotBlank(feed.getUrl()));
         }
     }
 }

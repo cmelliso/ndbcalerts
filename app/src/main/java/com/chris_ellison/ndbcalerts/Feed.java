@@ -8,22 +8,22 @@ import java.util.List;
  */
 public class Feed {
     private final String title;
-    private final String link;
+    private final String url;
     private final String description;
     private final String language;
     private final String copyright;
-    private final String pubDate;
+    private final String publicationDate;
 
     private final List<FeedMessage> entries = new ArrayList<FeedMessage>();
 
-    public Feed(String title, String link, String description, String language,
-                String copyright, String pubDate) {
+    public Feed(String title, String url, String description, String language,
+                String copyright, String publicationDate) {
         this.title = title;
-        this.link = link;
+        this.url = url;
         this.description = description;
         this.language = language;
         this.copyright = copyright;
-        this.pubDate = pubDate;
+        this.publicationDate = publicationDate;
     }
 
     public List<FeedMessage> getMessages() {
@@ -34,8 +34,8 @@ public class Feed {
         return title;
     }
 
-    public String getLink() {
-        return link;
+    public String getUrl() {
+        return url;
     }
 
     public String getDescription() {
@@ -50,7 +50,7 @@ public class Feed {
         return copyright;
     }
 
-    public String getPubDate() {
-        return pubDate;
+    public String getPublicationDate() {
+        return publicationDate;
     }
 }
