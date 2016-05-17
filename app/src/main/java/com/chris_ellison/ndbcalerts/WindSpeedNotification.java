@@ -1,6 +1,5 @@
 package com.chris_ellison.ndbcalerts;
 
-import android.R;
 import android.annotation.TargetApi;
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -141,7 +140,7 @@ public class WindSpeedNotification {
 
     /**
      * Cancels any notifications of this type previously shown using
-     * {@link #notify(Context, String, int)}.
+     * {@link #notify(Context, FeedMessage)}.
      */
     @TargetApi(Build.VERSION_CODES.ECLAIR)
     public static void cancel(final Context context) {
