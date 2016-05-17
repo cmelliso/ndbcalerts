@@ -33,6 +33,8 @@ public class FeedParser {
             String propName = criterion.getPropertyName();
             int propNameIndex = content.indexOf(propName);
             if(propNameIndex >= 0) {
+                //TODO look up property by reflection or by map of key to method in FeedMessage class or something and let FeedMessage parse out the relevant bits.
+                // Old FeedParserTests will need to be refactored to test FeedMessage methods instead.
                 int propValueSubstrStart = content.indexOf(VALUE_START_MARKER, propNameIndex) + VALUE_START_MARKER.length();
                 int propValueSubstrEnd = content.indexOf(VALUE_END_MARKER_WIND, propNameIndex);
 
